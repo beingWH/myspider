@@ -29,9 +29,9 @@ class GB688Spider(scrapy.Spider):
         for sel in response.xpath('//div[@class="bor2"]'):
             gb=Gb688Item()
             gb['Stardard']=sel.xpath('.//h1/text()').extract_first().strip()
-            gb['CNname']=sel.xpath('.//table[@class="tdlist"]//td')[0].css('b::text').extract_first().strip()
-            gb['ENname']=sel.xpath('.//table[@class="tdlist"]//td')[2].css('td::text').extract_first().strip()
-            gb['State']=sel.xpath('.//table[@class="tdlist"]//td')[3].css('span::text').extract_first().strip()
+            gb['CNname']=sel.xpath('.//table[@class="tdlist"]//tr')[0].css('b::text').extract_first().strip()
+            gb['ENname']=sel.xpath('.//table[@class="tdlist"]//tr')[1].css('td::text').extract_first().strip()
+            gb['State']=sel.xpath('.//table[@class="tdlist"]//tr')[2].css('span::text').extract_first().strip()
             gb['CSS']=sel.xpath('.//div[@clsss="row detail"]//div')[1].css('div::text').extract_first().strip()
             gb['ICS']=sel.xpath('.//div[@clsss="row detail"]//div')[3].css('div::text').extract_first().strip()
             gb['Issuedate']=sel.xpath('.//div[@clsss="row"]//div')[1].css('div::text').extract_first().strip()
